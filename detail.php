@@ -14,7 +14,7 @@ $item = new MercadoPago\Item();
 $item->id = 1234;
 $item->title = $_POST['title'];
 $item->description = '​Dispositivo móvil de Tienda e-commerce';
-$item->picture_url = $_POST['img'];
+$item->picture_url = 'https://ruizpac-mp-commerce-php.herokuapp.com'.$_POST['img'];
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
 
