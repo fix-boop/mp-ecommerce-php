@@ -18,7 +18,7 @@ $item->picture_url = $_POST['img'];
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
 
-$order-> external_reference = 'ruizpac98@gmail.com';
+//$order-> external_reference = 'ruizpac98@gmail.com';
 
 $preference->items = array($item);
 $preference->save();
