@@ -1,3 +1,35 @@
+<?php
+require 'vendor/autoload.php';
+
+require_once 'credenciales.php';
+
+// Agrega credenciales
+MercadoPago\SDK::setAccessToken($access_token);
+
+$producto = [
+    'id' => 1234,
+    'titulo' => 'Celular',
+    'descripcion' => '​Dispositivo móvil de Tienda e-commerce',
+    'link_img' => 'test',
+    'cantidad' => 1,
+    'precio' => 99,
+    'no_orden' => 'ruizpac98@gmail.com'
+];
+
+// Crea un objeto de preferencia
+$preference = new MercadoPago\Preference();
+
+// Crea un ítem en la preferencia
+$item = new MercadoPago\Item();
+$item->title = $producto['titulo'];
+$item->quantity = $producto['cantidad'];
+$item->unit_price = $producto['precio'];
+$preference->items = array($item);
+$preference->save();
+
+
+?>
+
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -131,6 +163,10 @@
                                         </h3>
                                     </div>
                                     <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                    <script
+  src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js"
+  data-preference-id="<?php echo $preference->id; ?>">
+</script>
                                 </div>
                             </div>
                         </div>
