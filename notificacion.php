@@ -3,15 +3,8 @@ require 'vendor/autoload.php';
 require_once 'credenciales.php';
 MercadoPago\SDK::setAccessToken($access_token);
 
-//Receive the RAW post data.
-$content = trim(file_get_contents("php://input"));
- 
-//Attempt to decode the incoming RAW post data from JSON.
-$decoded = json_decode($content, true);
-
-//Process the JSON.
-file_put_contents('php://stderr', print_r('NOTIFICACION RECIBIDA: ', true));
-file_put_contents('php://stderr', print_r($content, true));
+// Receive the JSON Post data in form of array
+$data = json_decode( file_get_contents( 'php://input' ), true ); 
 
 
 if (isset($_POST["type"])) {
@@ -22,16 +15,16 @@ if (isset($_POST["type"])) {
     case "payment":
         $payment = MercadoPago\Payment.find_by_id($_POST["id"]);
         // Guardar en BD, pago procesado
-       /* if (file_exists("datos.txt")){
+       if (file_exists("datos.txt")){
         $archivo = fopen("tmp/datos.txt", "a");
-        fwrite($archivo, PHP_EOL . $payment );
+        fwrite($archivo, PHP_EOL . $data );
         fclose($archivo);
         }
         else {
         $archivo = fopen("datos.txt", "w");
-        fwrite($archivo, PHP_EOL . $payment );
+        fwrite($archivo, PHP_EOL . $data );
         fclose($archivo);
-        }*/
+        }
         // Enviar mail al comprador, informado resultado
         break;
     case "plan":
