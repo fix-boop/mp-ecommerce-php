@@ -21,9 +21,13 @@ $preference = new MercadoPago\Preference();
 
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
+$item->id = $producto['id'];
 $item->title = $producto['titulo'];
+$item->description = $producto['descripcion'];
+$item->picture_url = $producto['link_img'];
 $item->quantity = $producto['cantidad'];
 $item->unit_price = $producto['precio'];
+
 $preference->items = array($item);
 $preference->save();
 
