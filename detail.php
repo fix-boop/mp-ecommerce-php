@@ -23,7 +23,7 @@ $preference->items = array($item);
 $preference->external_reference = 'ruizpac98@gmail.com';
 
 // Datos del comprador
-$payer = new MercadoPago\Payer();
+/*$payer = new MercadoPago\Payer();
 $payer->name = "Lalo";
 $payer->surname = "Landa";
 $payer->email = "test_user_81131286@testuser.com";
@@ -37,7 +37,7 @@ $payer->address = array(
 "street_number" => 1602,
 "zip_code" => "0394​0"
 );
-$preference->payer = array($payer);
+$preference->payer = array($payer);*/
 
 // Medios de Pago
 $preference->payment_methods = array(
