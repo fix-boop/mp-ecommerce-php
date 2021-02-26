@@ -38,7 +38,7 @@ $payer->phone = array(
 "zip_code" => "0394​0"
 );*/
 
-$preference->payer = array($payer);
+$preference->payer = $payer;
 
 // Medios de Pago
 $preference->payment_methods = array(
