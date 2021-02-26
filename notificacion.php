@@ -1,17 +1,18 @@
 <?php
-
-    $json = file_get_contents('php://input');
-
-    $json_url = json_decode($json);
-
-    $logFile = fopen("log.txt", 'a') or die("Error creando archivo");
-    fwrite($logFile, "\n\n".date("d/m/Y H:i:s")."JSON_URL: ".print_r( $json_url )) or die("Error escribiendo en el archivo");
-    fclose($logFile);
-
 require 'vendor/autoload.php';
 require_once 'credenciales.php';
-
 MercadoPago\SDK::setAccessToken($access_token);
+
+//Receive the RAW post data.
+$content = trim(file_get_contents("php://input"));
+ 
+//Attempt to decode the incoming RAW post data from JSON.
+$decoded = json_decode($content, true);
+
+//Process the JSON.
+file_put_contents('php://stderr', print_r('NOTIFICACION RECIBIDA: ', true));
+file_put_contents('php://stderr', print_r($content, true));
+
 
 if (isset($_POST["type"])) {
     //http_response_code(200);
@@ -42,11 +43,6 @@ if (isset($_POST["type"])) {
     case "invoice":
         $plan = MercadoPago\Invoice.find_by_id($_POST["id"]);
         break;
-    }
-    if (isset($payment)) {
-        $logFile = fopen("log.txt", 'a') or die("Error creando archivo");
-        fwrite($logFile, "\n".date("d/m/Y H:i:s")."JSON_payment: ".print_r($payment)) or die("Error escribiendo en el archivo");
-        fclose($logFile);
     }
 
 ?>
