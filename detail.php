@@ -8,11 +8,11 @@ MercadoPago\SDK::setAccessToken($access_token);
 
 $producto = [
     'id' => 1234,
-    'titulo' => 'Celular',
+    'titulo' => $_POST['title'],
     'descripcion' => '​Dispositivo móvil de Tienda e-commerce',
-    'link_img' => 'test',
-    'cantidad' => 1,
-    'precio' => 99,
+    'link_img' => $_POST['img'],
+    'cantidad' => $_POST['unit'],
+    'precio' => $_POST['price'],
     'no_orden' => 'ruizpac98@gmail.com'
 ];
 
@@ -162,11 +162,10 @@ $preference->save();
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
                                     <script
-  src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js"
-  data-preference-id="<?php echo $preference->id; ?>">
-</script>
+                                        src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js"
+                                        data-preference-id="<?php echo $preference->id; ?>">
+                                    </script>
                                 </div>
                             </div>
                         </div>
