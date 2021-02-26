@@ -6,27 +6,19 @@ require_once 'credenciales.php';
 // Agrega credenciales
 MercadoPago\SDK::setAccessToken($access_token);
 
-$producto = [
-    'id' => 1234,
-    'titulo' => $_POST['title'],
-    'descripcion' => '​Dispositivo móvil de Tienda e-commerce',
-    'link_img' => $_POST['img'],
-    'cantidad' => $_POST['unit'],
-    'precio' => $_POST['price'],
-    'no_orden' => 'ruizpac98@gmail.com'
-];
-
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
 
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
-$item->id = $producto['id'];
-$item->title = $producto['titulo'];
-$item->description = $producto['descripcion'];
-$item->picture_url = $producto['link_img'];
-$item->quantity = $producto['cantidad'];
-$item->unit_price = $producto['precio'];
+$item->id = 1234;
+$item->title = $_POST['title'];
+$item->description = '​Dispositivo móvil de Tienda e-commerce';
+$item->picture_url = $_POST['img'];
+$item->quantity = $_POST['unit'];
+$item->unit_price = $_POST['price'];
+
+$order-> external_reference = 'ruizpac98@gmail.com';
 
 $preference->items = array($item);
 $preference->save();
@@ -160,10 +152,10 @@ $preference->save();
                                             </h3>
                                         </div>
                                         <h3 >
-                                            <?php echo $_POST['price'] ?>
+                                            <?php echo "$" . $_POST['price'] ?>
                                         </h3>
                                         <h3 >
-                                            <?php echo "$" . $_POST['unit'] ?>
+                                            <?php echo "cantidad: " . $_POST['unit'] ?>
                                         </h3>
                                     </div>
                                     <script
