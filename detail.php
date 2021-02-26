@@ -32,11 +32,11 @@ $payer->phone = array(
 "number" => "5549737300"
 );
 
-/*$payer->address = array(
+$payer->address = array(
 "street_name" => "Insurgentes Sur",
 "street_number" => 1602,
 "zip_code" => "0394​0"
-);*/
+);
 
 $preference->payer = $payer;
 
@@ -53,11 +53,13 @@ $preference->payment_methods = array(
 
 // Páginas de retorno (back_url)
 $preference->back_urls = array(
-    "success" => "https://ruizpac-mp-commerce-php.herokuapp.com/success",
-    "failure" => "https://ruizpac-mp-commerce-php.herokuapp.com/failure",
-    "pending" => "https://ruizpac-mp-commerce-php.herokuapp.com/pending"
+    "success" => "https://ruizpac-mp-commerce-php.herokuapp.com/success.php",
+    "failure" => "https://ruizpac-mp-commerce-php.herokuapp.com/failure.php",
+    "pending" => "https://ruizpac-mp-commerce-php.herokuapp.com/pending.php"
 );
 $preference->auto_return = "approved";
+
+//$preference->notification_url = "https://ruizpac-mp-commerce-php.herokuapp.com/notification.php";
 
 $preference->save();
 ?>
@@ -75,6 +77,8 @@ $preference->save();
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
+
+    <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
 
     <link rel="stylesheet" href="./assets/category-landing.css" media="screen, print">
 
