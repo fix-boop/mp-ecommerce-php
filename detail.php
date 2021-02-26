@@ -62,18 +62,6 @@ $preference->auto_return = "approved";
 $preference->notification_url = "https://ruizpac-mp-commerce-php.herokuapp.com/notificacion.php?source_news=webhooks";
 //$preference->notification_url = "https://ruizpac-mp-commerce-php.herokuapp.com/notificacion.php";
 $preference->save();
-
-//guardo preferencia
-if (file_exists("datos.txt")){
-    $archivo = fopen("tmp/datos.txt", "a");
-    fwrite($archivo, PHP_EOL . $preference->id);
-    fclose($archivo);
-    }
-    else {
-    $archivo = fopen("datos.txt", "w");
-    fwrite($archivo, PHP_EOL . $preference->id);
-    fclose($archivo);
-    }
 ?>
 
 <!DOCTYPE html>
