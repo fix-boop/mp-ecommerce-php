@@ -3,7 +3,7 @@ require 'vendor/autoload.php';
 require_once 'credenciales.php';
 
 //header("HTTP/1.1 200 OK");
-    /*header('Content-type: application/json');
+    header('Content-type: application/json');
 
    MercadoPago\SDK::setAccessToken($access_token);
    $fp = fopen("notification.log","w");
@@ -26,14 +26,11 @@ require_once 'credenciales.php';
        case "invoice":
            $plan = MercadoPago\Invoice.find_by_id($json["id"]);
            break;
-   }*/
+   }
 
-if (isset($_POST["type"])) {
+/*if (isset($_POST["type"])) {
     http_response_code(200);
 }
-header('Content-type: application/json');
-
-$json = file_get_contents('php://input');
 
    switch($_POST["type"]) {
     case "payment":
@@ -41,7 +38,7 @@ $json = file_get_contents('php://input');
         // Guardar en BD, pago procesado
         if (file_exists("datos.txt")){
         $archivo = fopen("tmp/datos.txt", "a");
-        fwrite($archivo, PHP_EOL . $payment.$json );
+        fwrite($archivo, PHP_EOL . $payment);
         fclose($archivo);
         }
         else {
@@ -60,6 +57,6 @@ $json = file_get_contents('php://input');
     case "invoice":
         $plan = MercadoPago\Invoice.find_by_id($_POST["id"]);
         break;
-    }
+    }*/
 
 ?>
