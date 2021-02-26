@@ -14,12 +14,12 @@ if (isset($_POST["type"])) {
         // Guardar en BD, pago procesado
         if (file_exists("datos.txt")){
         $archivo = fopen("tmp/datos.txt", "a");
-        fwrite($archivo, PHP_EOL . $payment.$get );
+        fwrite($archivo, PHP_EOL . $_POST );
         fclose($archivo);
         }
         else {
         $archivo = fopen("datos.txt", "w");
-        fwrite($archivo, PHP_EOL . $payment.$get );
+        fwrite($archivo, PHP_EOL . $_POST );
         fclose($archivo);
         }
         // Enviar mail al comprador, informado resultado
