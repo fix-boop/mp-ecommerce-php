@@ -31,6 +31,7 @@ require_once 'credenciales.php';
 if (isset($_POST["type"])) {
     http_response_code(200);
 }
+header('Content-type: application/json');
 
 $json = file_get_contents('php://input');
 
