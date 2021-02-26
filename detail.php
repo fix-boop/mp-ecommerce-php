@@ -60,7 +60,7 @@ $preference->back_urls = array(
 $preference->auto_return = "approved";
 
 //$preference->notification_url = "https://ruizpac-mp-commerce-php.herokuapp.com/notification.php?source_news=webhooks";
-$preference->notification_url = "https://ruizpac-mp-commerce-php.herokuapp.com/notification.php";
+$preference->notification_url = "https://ruizpac-mp-commerce-php.herokuapp.com/notificacion.php";
 $preference->save();
 
 //guardo preferencia

@@ -3,7 +3,6 @@ require 'vendor/autoload.php';
 require_once 'credenciales.php';
 MercadoPago\SDK::setAccessToken($access_token);
 
-
 // obtenemos el contenido del request
 $notification = file_get_contents('php://input');
 
@@ -31,12 +30,12 @@ if (isset($_POST["type"])) {
         // Guardar en BD, pago procesado
        if (file_exists("datos.txt")){
         $archivo = fopen("tmp/datos.txt", "a");
-        fwrite($archivo, PHP_EOL . $data );
+        fwrite($archivo, PHP_EOL . $respuesta );
         fclose($archivo);
         }
         else {
         $archivo = fopen("datos.txt", "w");
-        fwrite($archivo, PHP_EOL . $data );
+        fwrite($archivo, PHP_EOL . $respuesta );
         fclose($archivo);
         }
         // Enviar mail al comprador, informado resultado
