@@ -18,7 +18,7 @@ $item->picture_url = 'https://ruizpac-mp-commerce-php.herokuapp.com'.$_POST['img
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
 
-$preference-> external_reference = 'ruizpac98@gmail.com';
+$preference->external_reference = 'ruizpac98@gmail.com';
 
 $preference->items = array($item);
 $preference->save();
