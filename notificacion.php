@@ -1,4 +1,15 @@
 <?php
+
+$post_data = $_POST['data'];
+
+if (!empty($post_data)) {
+    $filename = 'log.json';
+    $handle = fopen($filename, "w");
+    fwrite($handle, $post_data);
+    fclose($handle);
+    echo $file;
+}
+
 require 'vendor/autoload.php';
 require_once 'credenciales.php';
 MercadoPago\SDK::setAccessToken($access_token);
@@ -10,18 +21,6 @@ if (isset($_POST["type"])) {
    switch($_POST["type"]) {
     case "payment":
         $payment = MercadoPago\Payment.find_by_id($_POST["id"]);
-        // Guardar en BD, pago procesado
-       if (file_exists("datos.txt")){
-        $archivo = fopen("tmp/datos.txt", "a");
-        fwrite($archivo, PHP_EOL . $payment );
-        fclose($archivo);
-        }
-        else {
-        $archivo = fopen("datos.txt", "w");
-        fwrite($archivo, PHP_EOL . $payment );
-        fclose($archivo);
-        }
-        // Enviar mail al comprador, informado resultado
         break;
     case "plan":
         $plan = MercadoPago\Plan.find_by_id($_POST["id"]);
