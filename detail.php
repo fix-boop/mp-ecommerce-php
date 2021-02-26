@@ -1,10 +1,10 @@
 <?php
 require 'vendor/autoload.php';
-
 require_once 'credenciales.php';
 
 // Agrega credenciales
 MercadoPago\SDK::setAccessToken($access_token);
+MercadoPago\SDK::setIntegratorId($integrator_id);
 
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
@@ -59,7 +59,7 @@ $preference->back_urls = array(
 );
 $preference->auto_return = "approved";
 
-//$preference->notification_url = "https://ruizpac-mp-commerce-php.herokuapp.com/notification.php";
+$preference->notification_url = "https://ruizpac-mp-commerce-php.herokuapp.com/notification.php";
 
 $preference->save();
 ?>
